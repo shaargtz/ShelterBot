@@ -10,13 +10,13 @@ Technologies Used
 - IBM Cloud Functions
 
 ## Watson 
-Helps notify the donor of the current needs of the shelters so he can donate itesm that are critical for relief centers 
+Helps notify the donor of the current needs of the shelters so he can donate items that are critical for relief centers. 
 
 ## Hyperledger Fabric
 Keeps control of the items being used from the relief center, occupancy and refugee history. 
 
 ## Ionic App
-App for the relief staff to keep control of the items being used and now what items are of critical importance in real tiem.
+App for the relief staff to keep control of the items being used and now what items are of critical importance in real time.
 
 
 
