@@ -1,0 +1,3 @@
+[submodule "Hyperledger-Fabric"]
+	path = Hyperledger-Fabric
+	url = https://github.com/christ0089/Hyperledger-Fabric.git
