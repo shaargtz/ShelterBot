@@ -1,0 +1,327 @@
+{
+  "name": "rescueProducts",
+  "intents": [
+    {
+      "intent": "buyItem",
+      "examples": [
+        {
+          "text": "I want to buy an item"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "trackItem",
+      "examples": [
+        {
+          "text": "I want to track an item"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "welcome",
+      "examples": [
+        {
+          "text": "hello"
+        },
+        {
+          "text": "hi"
+        },
+        {
+          "text": "hey"
+        }
+      ],
+      "description": ""
+    }
+  ],
+  "entities": [
+    {
+      "entity": "item",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "Banana",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Water",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Cereal",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Soup",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "Diapers",
+          "synonyms": []
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "sys-number",
+      "values": []
+    }
+  ],
+  "language": "en",
+  "metadata": {
+    "api_version": {
+      "major_version": "v1",
+      "minor_version": "2018-09-20"
+    }
+  },
+  "description": "",
+  "dialog_nodes": [
+    {
+      "type": "standard",
+      "title": "Show Items",
+      "output": {
+        "generic": [
+          {
+            "title": "",
+            "options": [
+              {
+                "label": "Water",
+                "value": {
+                  "input": {
+                    "text": "Water"
+                  }
+                }
+              },
+              {
+                "label": "Soup",
+                "value": {
+                  "input": {
+                    "text": "Soup"
+                  }
+                }
+              },
+              {
+                "label": "Cereal",
+                "value": {
+                  "input": {
+                    "text": "Cereal"
+                  }
+                }
+              },
+              {
+                "label": "Banana",
+                "value": {
+                  "input": {
+                    "text": "Banana"
+                  }
+                }
+              },
+              {
+                "label": "Diapers",
+                "value": {
+                  "input": {
+                    "text": "Diapers"
+                  }
+                }
+              }
+            ],
+            "response_type": "option"
+          }
+        ]
+      },
+      "parent": "node_2_1563990968116",
+      "metadata": {},
+      "dialog_node": "node_4_1563991107082"
+    },
+    {
+      "type": "standard",
+      "title": "Get Tracking ID",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Okay, what is the tracking ID?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_1_1563990733019",
+      "metadata": {},
+      "conditions": "#trackItem",
+      "dialog_node": "node_3_1563991014590",
+      "previous_sibling": "node_2_1563990968116"
+    },
+    {
+      "type": "standard",
+      "title": "Check Urgent Items",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Alright, give me a second"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_1_1563990733019",
+      "metadata": {},
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "body",
+        "dialog_node": "node_4_1563991107082"
+      },
+      "conditions": "#buyItem",
+      "dialog_node": "node_2_1563990968116"
+    },
+    {
+      "type": "standard",
+      "title": "Purchase",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Thanks for purchasing $item!"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_6_1563993436884",
+      "actions": [
+        {
+          "name": "/marianoshaar@gmail.com_dev/actions/actualizar",
+          "type": "server",
+          "parameters": {
+            "org": "Org1",
+            "name": "$item",
+            "quantity": "@sys-number"
+          },
+          "credentials": "$private.my_creds",
+          "result_variable": "$my_result"
+        }
+      ],
+      "context": {
+        "item": "$item1",
+        "private": {
+          "my_creds": {
+            "user": "0f26a209-7644-4d79-9616-627e8d1dc089",
+            "password": "boRyfGj48aXoIUJBSmooubLJCEpnyYhfQSnJNUs6RGi8ln5UZVhXIsHaHgVAHS40"
+          }
+        }
+      },
+      "metadata": {},
+      "conditions": "anything_else",
+      "dialog_node": "node_5_1563992182158"
+    },
+    {
+      "type": "standard",
+      "title": "Number of Items",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "And how many would you like to purchase?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_4_1563991107082",
+      "context": {
+        "item1": "@item"
+      },
+      "metadata": {},
+      "conditions": "anything_else",
+      "dialog_node": "node_6_1563993436884"
+    },
+    {
+      "type": "standard",
+      "title": "Anything else",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "I didn't understand. You can try rephrasing."
+              },
+              {
+                "text": "Can you reword your statement? I'm not understanding."
+              },
+              {
+                "text": "I didn't get your meaning."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "metadata": {},
+      "conditions": "anything_else",
+      "dialog_node": "Anything else",
+      "previous_sibling": "node_1_1563990733019"
+    },
+    {
+      "type": "standard",
+      "title": "Welcome",
+      "output": {
+        "generic": [
+          {
+            "title": "Hi! What can I help you with?",
+            "options": [
+              {
+                "label": "I want to buy an item",
+                "value": {
+                  "input": {
+                    "text": "I want to buy an item"
+                  }
+                }
+              },
+              {
+                "label": "I want to track an item",
+                "value": {
+                  "input": {
+                    "text": "I want to track an item"
+                  }
+                }
+              }
+            ],
+            "response_type": "option"
+          }
+        ]
+      },
+      "metadata": {},
+      "conditions": "#welcome || welcome",
+      "dialog_node": "node_1_1563990733019"
+    }
+  ],
+  "workspace_id": "d5ae56a1-ad49-4c1a-8ab6-f70a294a0677",
+  "counterexamples": [],
+  "system_settings": {
+    "tooling": {
+      "store_generic_responses": true
+    },
+    "spelling_auto_correct": true
+  },
+  "learning_opt_out": false,
+  "status": "Available"
+}
