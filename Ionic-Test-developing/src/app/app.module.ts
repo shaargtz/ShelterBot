@@ -25,7 +25,7 @@ import { PostPictureService } from './post-picture';
 import { NewRefugeePageModule } from './new-refugee/new-refugee.module';
 
 const firebase = {
-  apiKey: "AIzaSyBK2On75RzeYTLWqpXWyCJXR9Pe3ytj318",
+  apiKey: "apikey",
   authDomain: "ibm-challenge-78f32.firebaseapp.com",
   databaseURL: "https://ibm-challenge-78f32.firebaseio.com",
   projectId: "ibm-challenge-78f32",
