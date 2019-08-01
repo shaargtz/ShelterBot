@@ -1,0 +1,25 @@
+<ion-content>
+  <div style="height: 50%;width: 80%; margin: auto; text-align: center; margin-top: 50%; margin-bottom: auto">
+    <ion-title>Rescue Login</ion-title>
+
+    <form [formGroup]="login" (submit)="logForm()">
+      <ion-item>
+        <ion-label position="floating">Email</ion-label>
+        <ion-input formControlName="mail"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Password</ion-label>
+        <ion-input type="password" formControlName="password"></ion-input>
+      </ion-item>
+      <br>
+      <ion-button shape="round" style="font-size: 3.5vw; height: 30px;" type="submit">Enter</ion-button>
+    </form>
+    <br>
+
+    <div>
+      <a (click)="resetPass()">Forgot yout password? </a>
+      <ion-button (click)="openRegister()">Register here</ion-button>
+    </div>
+  </div>
+</ion-content>

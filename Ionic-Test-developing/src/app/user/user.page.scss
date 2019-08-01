@@ -1,0 +1,41 @@
+ion-header {
+    text-align: center;
+}
+ion-content{
+    text-align: center;
+}
+ion-item{
+    padding-right: 19px;
+}
+.user {
+    background-color: #eff0f2;
+    padding: 3% 10% 1%;
+    margin: 5% 20%;
+    border-radius: 5%,
+};
+.userImg{
+    border-radius: 100%
+}
+#nameID{
+    font-size: 5vw;
+    font-weight: bold;
+    line-height: 90%;
+    margin: 1%;
+}
+#organizationID {
+    font-size: 3vw;
+    margin: 0% 0 0 5%;
+}
+#locationID {
+    font-size: 3.5vw;
+    line-height: 90%;
+    margin: 0% -5% 5% -4%;
+}
+.label {
+    margin: 0% 0 0 0;
+}
+.settingsImg{
+    width: 7.5%;
+    border-radius: 100%;
+    margin-bottom: -1%
+}

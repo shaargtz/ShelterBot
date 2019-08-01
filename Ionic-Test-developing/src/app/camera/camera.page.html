@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Camera</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-button (click)="scanCodeV2()" color="danger" shape="round">
+    <ion-icon name="camera" style="margin-right: 5px; margin-left: -3px"></ion-icon>
+    Tap to scan QR code
+  </ion-button>
+  <div *ngIf="isOpen">
+    <ion-card  *ngIf="object$ | async; let object">
+      <ion-card-header>
+        <ion-card-subtitle>Product</ion-card-subtitle>
+        <ion-card-title>{{object.Name}}</ion-card-title>
+      </ion-card-header>
+      <img src="{{object.Image}}">
+      <ion-card-content>
+        Amount: {{object.Available}}<br>
+        <ion-button shape="round" (click)="assign(object)">Asignar</ion-button>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-label>Refugee in shelter.</ion-label>
+    <ion-list *ngIf="products$ | async; let _products">
+      <ion-item *ngFor="let item of _products; let i = index;" lines="inset" >
+        <ion-avatar>
+          <img src="{{item.Image}}">
+        </ion-avatar>
+        <ion-label style="margin-left: 10px">
+          <div style="font-size: 5vw"><b>{{item.Name}}</b><br></div>
+          <div style="font-size: 4vw; margin-top: 2px" *ngIf="item.Available">Available: {{item?.Available}} / Original
+            Count: {{item?.Available}}</div>
+        </ion-label>
+        <ion-checkbox slot="end" [(ngModel)]="item.isChecked" (ionFocus)="selected(item.key)"></ion-checkbox>
+      </ion-item>
+    </ion-list>
+  </div>
+
+
+
+</ion-content>

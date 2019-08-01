@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar>  
+    <ion-back-button style="display: inline-block"></ion-back-button>
+    <ion-title style="display: inline-block">Product</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+      <!-- <ion-title style="font-size: 5vw">{{nombreProd}}</ion-title>
+    <img src="{{imgURLProd}}">
+      Cantidad: {{cantidadProd}} -->
+
+  <ion-card >
+    <ion-card-header>
+      <ion-card-title style="text-align: center; font-size: 8vw">{{nombreProd}}</ion-card-title>
+    </ion-card-header>
+    <img src="{{imgURLProd}}">
+    <ion-card-content>
+      {{availableProd}}
+    </ion-card-content>
+  </ion-card>
+
+  <ion-chip fill="outline">
+    <ion-icon name="cog"></ion-icon>
+    <ion-label>Settings</ion-label>
+  </ion-chip>
+</ion-content>

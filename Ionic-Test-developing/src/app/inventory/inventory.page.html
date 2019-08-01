@@ -1,0 +1,42 @@
+<ion-header #head>
+  <ion-toolbar color="primary">
+
+    <ion-buttons slot="end">
+      <ion-button (click)="openNewProduct()">
+        <ion-icon slot="icon-only" name="add"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <ion-title>Inventory</ion-title>
+    <!-- <ion-buttons slot="start">
+        <ion-button (click)="clickedStar()">
+          <ion-icon slot="icon-only" name="search"></ion-icon>
+        </ion-button>
+      </ion-buttons> -->
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-segment (ionChange)="segmentChanged($event)">
+    <ion-segment-button value="Inventory">
+      <ion-label>Inventory</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="Refugees">
+      <ion-label>Refugees</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+  <div class="lista">
+    <ion-list  *ngIf="products$ | async; let _products">
+      <ion-item *ngFor="let item of _products; let i = index;" lines="inset" (click)="openDisplay(item)">
+        <ion-avatar *ngIf="item.Image != ''">
+          <img src="{{item.Image}}">
+        </ion-avatar>
+        <ion-icon *ngIf="item.Image == ''" name="help"></ion-icon>
+        <ion-label style="margin-left: 10px">
+          <div style="font-size: 5vw"><b>{{item.Name}}</b><br></div>
+          <div style="font-size: 4vw; margin-top: 2px" *ngIf="item.Stock">Available: {{item?.Stock}}</div>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>
